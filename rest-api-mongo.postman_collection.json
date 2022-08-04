@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "eca9d365-8d87-4463-8cfd-3ebbfb93e59b",
+		"name": "rest-api-mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"88999999999\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/auth",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/62ec46a1f3fa9927f32cdedf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"62ec46a1f3fa9927f32cdedf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe \",\n    \"phone\": \"88999999999\",\n    \"roles\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"phoneNumber\": \"123456789\",\n    \"roles\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/62ec46a1f3fa9927f32cdedf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"62ec46a1f3fa9927f32cdedf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/62ec42f6cf4ea44c93541e27",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"62ec42f6cf4ea44c93541e27"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"Boa noite!\",\n    \"user\": \"62ec46a1f3fa9927f32cdedf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/messages",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"message\": \"Seja bem-vindo!\",\n        \"user\": \"62ec46a1f3fa9927f32cdedf\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/messages/62ec4f80363e865d8198a85e",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"62ec4f80363e865d8198a85e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWM0MmY2Y2Y0ZWE0NGM5MzU0MWUyNyIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY1OTY1MTA5OCwiZXhwIjoxNjU5NjU0Njk4fQ.R9khC9ZsLp9X9i5z-G-0XEi4jwXGBqX-zgS6jS6UZwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/messages/62ec4bf7bac78d797353b9c3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"messages",
+								"62ec4bf7bac78d797353b9c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Init",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

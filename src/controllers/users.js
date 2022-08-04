@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { getToken } = require('../utils/auth')
+const { parseConstValue } = require('graphql')
 
 const getAll = async (req, res) => {
     try {
@@ -11,11 +12,18 @@ const getAll = async (req, res) => {
     }
 }
 
+const getOne = async (req, res) => {
+    try {
+        const user = await User.findById(req.params._id)
+        res.json(user)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
 
 const auth = async (req, res) => {
-    const user = req.body
-    console.log(user)
-    const userDb = await User.findOne({ username: user.username })
+    const userDb = await User.findOne({ phone: req.body.phone })
     if (userDb) {
         const payload = {
             id: userDb._id,
@@ -36,19 +44,49 @@ const auth = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    const user = req.body
-    const userDb = await User.findOne({ username: user.username })
-    if (userDb) {
-        res.send('user already exists')
-    } else {
-        const newUser = new User(user)
-        await newUser.save()
-        res.send('user created')
+    try {
+
+        const userDb = await User.findOne({ phone: req.body.phone })
+        if (userDb) {
+            res.send('user already exists')
+        } else {
+            const newUser = new User(req.body)
+            await newUser.save()
+            res.send('user created')
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
+const update = async (req, res) => {
+    try {
+        req.body.updatedAt = new Date()
+        const userDb = await User.findOneAndUpdate({ _id: req.params._id }, req.body)
+        if (userDb) {
+            res.json(userDb)
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+}
+
+const del = async (req, res) => {
+    try {
+        const userDb = await User.findOneAndDelete({ _id: req.params._id })
+        if (userDb) {
+            res.json(userDb)
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.message })
     }
 }
 
 module.exports = {
     getAll,
+    getOne,
     auth,
-    create
+    create,
+    update,
+    del
 }

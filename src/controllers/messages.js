@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
 
 const getOne = async (req, res) => {
     try {
-        const messages = await Message.find({ user: req.params.userId })
+        const messages = await Message.find({ _id: req.params._id })
         res.json(messages)
     }
     catch (err) {
@@ -34,7 +34,7 @@ const create = async (req, res) => {
 
 const del = async (req, res) => {
     try {
-        await Message.findByIdAndDelete(req.params.id)
+        await Message.findByIdAndDelete(req.params._id)
         res.send('message deleted')
     }
     catch (err) {
@@ -44,7 +44,7 @@ const del = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        const message = await Message.findByIdAndUpdate(req.params.id, req.body)
+        const message = await Message.findByIdAndUpdate(req.params._id, req.body)
         res.json(message)
     }
     catch (err) {

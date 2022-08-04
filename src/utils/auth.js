@@ -7,13 +7,14 @@ const getToken = (payload) => {
 }
 
 const authentication = async (req, res, next) => {
-    const token = req.headers['x-access-token'] ||
+    let token = req.headers['x-access-token'] ||
         req.query.token ||
         req.body.token ||
         req.headers.token ||
         req.headers.authorization
 
     if (token) {
+        token = token.split(' ')[1]
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
                 res.status(400).send({ success: false, error: 'malformed or invalid token' })
