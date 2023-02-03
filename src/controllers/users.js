@@ -1,7 +1,6 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const { getToken } = require('../utils/auth')
-const { parseConstValue } = require('graphql')
 
 const getAll = async (req, res) => {
     try {
