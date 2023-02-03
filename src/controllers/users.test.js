@@ -77,3 +77,47 @@ describe('auth', () => {
         getToken.mockReturnValue('1234567890'); 
     })
 });
+
+describe('create', () => {
+    it('creates a new user', async () => {
+        User.findOne.mockResolvedValue();
+        const req = {
+            body: {
+                phone: '1234567890'
+            }
+        };
+        const res = {
+            send: jest.fn()
+        };
+        await user.create(req, res);        
+        expect(res.send).toHaveBeenCalledWith('user created');
+    });
+
+    it('returns an error message if the user already exists', async () => {
+        User.findOne.mockResolvedValue({ phone: '1234567890', name: 'John Doe' });
+        const req = {
+            body: {
+                phone: '1234567890',
+                name: 'John Doe'
+            }
+        };
+        const res = {
+            send: jest.fn()
+        };
+        await user.create(req, res);        
+        expect(res.send).toHaveBeenCalledWith('user already exists');
+    });
+
+    it('returns an error if there is an exception', async () => {
+        User.findOne.mockRejectedValue(new Error('Error finding user'));
+        const req = {
+            body: {}
+        };
+        const res = {
+            status: jest.fn().mockReturnValue({ json: jest.fn() })
+        };
+        await user.create(req, res);
+        expect(res.status).toHaveBeenCalledWith(500);
+        expect(res.status().json).toHaveBeenCalledWith({ message: 'Error finding user' });
+    });
+});
